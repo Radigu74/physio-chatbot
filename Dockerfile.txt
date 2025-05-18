@@ -1,0 +1,16 @@
+FROM python:3.10-slim
+WORKDIR /app
+
+# Copy dependency definitions and install them
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Optional: a build argument to bust cache if needed
+ARG CACHEBUST=1
+RUN echo "Cache bust: ${CACHEBUST}"
+
+# Copy the rest of your code
+COPY . .
+
+# Set the command to run your application
+CMD ["python", "main.py"]

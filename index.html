@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Floating Chatbot Widget</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    #chatbot-toggle, #chatbot-frame {
+      position: fixed;
+      z-index: 999999;
+      -webkit-transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+    }
+
+    #chatbot-toggle {
+      bottom: 20px;
+      right: 20px;
+      background-color: #2f5d50;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #chatbot-frame {
+      bottom: 90px;
+      right: 20px;
+      width: 400px;
+      height: 600px;
+      border: none;
+      border-radius: 12px;
+      display: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+
+    @media screen and (max-width: 500px) {
+      #chatbot-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+        right: 15px;
+        bottom: 15px;
+      }
+
+      #chatbot-frame {
+        width: 90%;
+        right: 5%;
+        height: 80vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="chatbot-toggle" title="Chat with Tim">💬</button>
+  <iframe
+    id="chatbot-frame"
+    src="http://54.254.162.138:10000?embed=true&origin=website"
+  ></iframe>
+
+  <script>
+    const toggle = document.getElementById("chatbot-toggle");
+    const frame = document.getElementById("chatbot-frame");
+    toggle.addEventListener("click", function () {
+      frame.style.display = frame.style.display === "block" ? "none" : "block";
+    });
+  </script>
+</body>
+</html>
